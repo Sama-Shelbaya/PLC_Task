@@ -1,0 +1,61 @@
+"Start Symbol" = <program>
+               
+!------------Terminal----------
+IDENTIFIER = [_]|{letter}{Alphanumeric}*
+DIGIT = ('+'|'-')?{digit}+ ('.'{digit}+)?(('e' |('-'|'+'){digit}+) '^' ('-'|'+'){digit}+('.'{digit}+)?)?
+!------------Rules-------------
+<program> ::= Begin <stmt_list> Finish
+           
+
+<stmt_list> ::= <concept>
+             |<concept><stmt_list>
+             
+
+<concept>::= <assign>
+          |<if_stmt>
+          |<for_stmt>
+          
+<assign>::= <id>'='<expr> ','
+         
+<id> ::= IDENTIFIER
+      
+<expr>::= <expr>'+'<term>
+       | <expr>'-'<term>
+       | <term>
+
+       
+<term> ::= <term>'*'<factor>
+        | <term>'/'<factor>
+        | <term>'%'<factor>
+        | <factor>
+      
+<factor> ::= <factor>'**'<exp>
+          | <exp>
+          
+<exp> ::= '('<expr>')'
+       | <id>
+       | <digit>
+       
+<digit> ::= DIGIT
+         
+!-----------if_stmt-----------
+
+<if_stmt> ::= if'('<cond>')' Begin <stmt_list> end
+           | if '('<cond>')' Begin <stmt_list> end else <stmt_list>
+        
+<cond> ::= <exp><op><exp>
+      
+<op> ::= '<'|'>' | '==' | '!='
+      
+
+!------------for_stmt----------
+
+<for_stmt> ::= For '('<data><assign>';' <cond> ';' <step>')' Begin <stmt_list> end
+            
+<data> ::= int |float |double|str
+        
+<step> ::= --<id>
+        |<id>'--'
+        |'++'<id>
+        |<id>'++'
+        |<assign>
