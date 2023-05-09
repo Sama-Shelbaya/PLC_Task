@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CalithaLib">
+      <HintPath>bin\Debug\netcoreapp3.1\CalithaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GoldParserEngine">
+      <HintPath>bin\Debug\netcoreapp3.1\GoldParserEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
